@@ -1,0 +1,25 @@
+---
+- hosts: all
+  become: 'yes'
+  vars:
+    user:
+      - name: "kugelblitz"
+    packages:
+      - vim
+      - smartmontools
+      - curl
+      - wget
+      - sudo
+      - base-devel
+      - grub
+      - networkmanager
+      - dhcpcd
+      - mesa
+      - mesa-demos
+      - xf86-video-amdgpu
+  tasks:
+    - name: create default user
+      user:
+        name: '"{{ item.name }}"'
+        password: testing123
+        state: present
