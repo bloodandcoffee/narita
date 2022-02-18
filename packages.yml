@@ -1,69 +1,32 @@
 ---
 - hosts: all
-  become: 'yes'
-  vars:
-    packages:
-      - adobe-source-han-sans-jp-fonts
-      - alsa-firmware
-      - alsa-utils
-      - ansible
-      - base16-vtrgb
-      - chromium
-      - cmatrix
-      - code
-      - curl
-      - dhcpcd
-      - discord
-      - greetd
-      - grim
-      - gzip
-      - imv
-      - kitty
-      - mesa
-      - mesa-demos
-      - neofetch
-      - networkmanager
-      - python-pip
-      - smartmontools
-      - sudo
-      - termium-font
-      - ttf-font-awesome
-      - unzip
-      - vim
-      - waybar
-      - wget
-      - xf86-input-synaptics
-      - xorg-xwayland
-      - xorg-xeyes
-      - zip
-    ati:
-      - libva-mesa-driver
-      - mesa-vdpau
-      - vulkan-radeon
-      - xf86-video-amdgpu
-    intel:
-      - libva-intel-driver
-      - libva-utils
-      - vulkan-intel
+  become: yes
   pre_tasks:
+    - name: include vars
+      include_vars:
+        dir: "{{ playbook_dir }}/vars"
     - name: detect video card
       command: lspci | grep ATI
       register: AMD
+    - name: update package list
+      community.general.pacman:
+        update_cache: yes
+        upgrade: yes
   tasks:
     - name: install pacman packages
       community.general.pacman:
         name: "{{ item }}"
-        state: present
+        state: latest
       loop: "{{ packages }}"
     - name: install ati drivers     # Install AMD video drivers if ATI card is detected
       community.general.pacman:
         name: "{{ item }}"
-        state: present
+        state: latest
       loop: "{{ ati }}"
       when: AMD.stdout|length != 0
     - name: install intel drivers   # Assume Intel if AMD card not detected
       community.general.pacman:
         name: "{{ item }}"
-        state: present
+        state: latest
       loop: "{{ intel }}"
       when: AMD.stdout|length == 0
