@@ -1,12 +1,11 @@
 ---
 - hosts: all
-  become: 'yes'
+  become: yes
   vars:
-    flags:
-        kyoto: acpi_backlight=video
-        tokyo: pci=noats
-        omura: pci=noats
   pre_tasks:
+    - name: include vars
+      include_vars:
+        dir: "{{ playbook_dir }}/vars"
     - name: get hostname
       command: hostname
       register: hostname
@@ -14,17 +13,12 @@
       meta: end_play
       when: hostname.stdout not in flags
   tasks:
-    - name: remove old grub boot flags
-      lineinfile:
+    - name: add grub boot flags
+      replace:
         path: /etc/default/grub
-        search_string: GRUB_CMDLINE_LINUX=
-        state: absent
-    - name: add new grub boot flag
-      lineinfile:
-        path: /etc/default/grub
-        insertafter: GRUB_CMDLINE_LINUX_DEFAULT
-        line: GRUB_CMDLINE_LINUX="{{ flags[hostname.stdout] }}"
-        state: present
+        regexp: 'GRUB_CMDLINE_LINUX=\"+'
+        replace: GRUB_CMDLINE_LINUX="{{ flags[hostname.stdout] }}"
+      ignore_errors: yes
   post_tasks:
     - name: regenerate grub.cfg
       command: grub-mkconfig -o /boot/grub/grub.cfg

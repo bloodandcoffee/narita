@@ -1,0 +1,4 @@
+---
+flags:
+    kyoto: acpi_backlight=video
+    tokyo: pci=noats
