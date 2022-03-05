@@ -4,6 +4,7 @@ packages:
   - alsa-firmware
   - alsa-utils
   - ansible
+  - cage
   - chromium
   - cmatrix
   - code
@@ -33,9 +34,8 @@ packages:
   - zip
 packages_aur:
   - auto-cpufreq
-  - base16-vtrgb
   - greetd
-  - greetd-tuigreet
+  - greetd-gtkgreet
   - otf-apple-sf-pro
   - river
   - rofi-lbonn-wayland

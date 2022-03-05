@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: yes
+  pre_tasks:
+    - name: include vars
+      include_vars:
+        dir: "{{ playbook_dir }}/vars"
+  tasks:
+    - name: configure greetd
+      ansible.builtin.replace:
+        path: /etc/greetd/config.toml
+        regexp: 'command = .+'
+        replace: 'command = \"{{ greetd_command }}\"'
