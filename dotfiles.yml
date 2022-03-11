@@ -8,4 +8,26 @@
         dir: "{{ playbook_dir }}/vars"
   tasks:
     - name: create bare repo
-
+      command: git init --bare .dotfiles
+      become_method: su
+      become_user: "{{ user }}"
+      become_flags: -s /bin/sh
+      chdir: ~/
+    - name: add remote origin
+      command: "git remote add origin {{ dotfiles_git }}"
+      become_method: su
+      become_user: "{{ user }}"
+      become_flags: -s /bin/sh
+      chdir: ~/.dotfiles
+    - name: set showUntrackedFiles to no
+      command: "git config --local status.showUntrackedFiles no"
+      become_method: su
+      become_user: "{{ user }}"
+      become_flags: -s /bin/sh
+      chdir: ~/.dotfiles
+    - name: pull origin
+      command: "git --git-dir=$HOME/.cfg/.git --work-tree=$HOME pull origin"
+      become_method: su
+      become_user: "{{ user }}"
+      become_flags: -s /bin/sh
+      chdir: ~/.dotfiles
