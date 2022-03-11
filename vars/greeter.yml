@@ -1,2 +1,2 @@
 ---
-greetd_command: cage -s -- gtkgreet 
+greetd_command: cage -sd -- gtkgreet -c river -s ~/.config/gtkgreet/style.css 
