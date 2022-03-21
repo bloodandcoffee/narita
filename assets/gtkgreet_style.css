@@ -7,7 +7,7 @@ window {
 #body button label {
 	font-family: SF Pro Display;
 	font-size: 20px;
-	color: #F9F9F9;
+	color: inherit;
 }
 
 #body label {
