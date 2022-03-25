@@ -36,7 +36,7 @@ packages_aur:
   - auto-cpufreq
   - greetd
   - greetd-gtkgreet
-  - otf-apple-sf-pro
+  - apple-fonts
   - river
   - rofi-lbonn-wayland
   - swaylock-effects-git
