@@ -1,33 +1,34 @@
 ---
 - hosts: all
   become: yes
+  any_errors_fatal: false
   vars:
   pre_tasks:
     - name: include vars
       include_vars:
         dir: "{{ playbook_dir }}/vars"
   tasks:
-    - name: create bare repo
-      command: git init --bare .dotfiles
+    - name: clone bare repo
+      git:
+        repo: "{{ dotfiles_git }}"
+        dest: ~/.dotfiles
+        bare: yes
       become_method: su
       become_user: "{{ user }}"
       become_flags: -s /bin/sh
-      chdir: ~/
-    - name: add remote origin
-      command: "git remote add origin {{ dotfiles_git }}"
-      become_method: su
-      become_user: "{{ user }}"
-      become_flags: -s /bin/sh
-      chdir: ~/.dotfiles
     - name: set showUntrackedFiles to no
       command: "git config --local status.showUntrackedFiles no"
       become_method: su
       become_user: "{{ user }}"
       become_flags: -s /bin/sh
-      chdir: ~/.dotfiles
-    - name: pull origin
-      command: "git --git-dir=$HOME/.cfg/.git --work-tree=$HOME pull origin"
+      ignore_errors: yes
+      args:
+        chdir: ~/.dotfiles
+    - name: reset repo
+      command: "git --git-dir=$HOME/.dotfiles --work-tree=$HOME reset --hard"
       become_method: su
       become_user: "{{ user }}"
       become_flags: -s /bin/sh
-      chdir: ~/.dotfiles
+      ignore_errors: yes
+      args:
+        chdir: ~/
