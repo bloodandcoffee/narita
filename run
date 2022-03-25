@@ -1,0 +1,13 @@
+#!/bin/bash
+
+declare IP
+echo "IP address or domain of target machine:"
+read IP
+
+echo root@$IP >> $(dirname "$BASH_SOURCE")/hosts
+
+for PLAY in $(dirname "$BASH_SOURCE")/*.yml; do
+	ansible-playbook $PLAY
+done
+
+git checkout $(dirname "$BASH_SOURCE")/hosts
