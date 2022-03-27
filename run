@@ -1,12 +1,19 @@
 #!/bin/bash
 
+# Read target host IP
 declare IP
 echo "IP address or domain of target machine:"
 read IP
 
 echo root@$IP >> $(dirname "$BASH_SOURCE")/hosts
 
-for PLAY in $(dirname "$BASH_SOURCE")/*.yml; do
+# Run install playbooks
+for PLAY in $(dirname "$BASH_SOURCE")/install/*.yml; do
+	ansible-playbook $PLAY
+done
+
+# Run config playbooks
+for PLAY in $(dirname "$BASH_SOURCE")/configure/*.yml; do
 	ansible-playbook $PLAY
 done
 

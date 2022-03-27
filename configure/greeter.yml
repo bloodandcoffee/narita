@@ -10,7 +10,7 @@
       ansible.builtin.replace:
         path: /etc/greetd/config.toml
         regexp: 'command = .+'
-        replace: 'command = \"{{ greetd_command }}\"'
+        replace: 'command = {{ greetd_command }}'
     - name: copy gtkgreet css
       copy:
         src: "{{ playbook_dir }}/assets/gtkgreet_style.css"

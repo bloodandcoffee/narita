@@ -1,4 +1,5 @@
 ---
+user: kugelblitz
 packages:
   - adobe-source-han-sans-jp-fonts
   - alsa-firmware
@@ -22,7 +23,7 @@ packages:
   - python-pip
   - smartmontools
   - sudo
-  - termium-font
+  - swaybg
   - ttf-font-awesome
   - unzip
   - vim

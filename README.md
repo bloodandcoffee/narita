@@ -6,11 +6,12 @@ Ansible playbooks to deploy my Arch environment
 
 **Host**
 - ansible
+- **password-free root** access to target machine
 - community.general.pacman
 - kewlfft.aur.aur
 
 ```
-yay -S ansible-collection-kewlfft-aur
+ansible-galaxy collection install kewlfft.aur
 ```
 
 **Target**

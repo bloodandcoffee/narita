@@ -7,7 +7,7 @@
       include_vars:
         dir: "{{ playbook_dir }}/vars"
     - name: get hostname
-      command: hostname
+      command: "cat /etc/hostname"
       register: hostname
     - name: check if machine needs boot flags
       meta: end_play

@@ -8,7 +8,8 @@
     - name: detect video card
       command: lspci | grep ATI
       register: AMD
-    - name: update package list
+      ignore_errors: yes
+    - name: update package list and upgrade
       community.general.pacman:
         update_cache: yes
         upgrade: yes
