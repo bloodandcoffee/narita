@@ -16,7 +16,7 @@
     - name: add grub boot flags
       replace:
         path: /etc/default/grub
-        regexp: 'GRUB_CMDLINE_LINUX=\"+'
+        regexp: 'GRUB_CMDLINE_LINUX=\".+'
         replace: GRUB_CMDLINE_LINUX="{{ flags[hostname.stdout] }}"
       ignore_errors: yes
   post_tasks:

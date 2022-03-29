@@ -6,7 +6,7 @@
       include_vars:
         dir: "{{ playbook_dir }}/vars"
     - name: detect video card
-      command: lspci | grep ATI
+      ansible.builtin.shell: lspci | grep ATI
       register: AMD
       ignore_errors: yes
     - name: update package list and upgrade
