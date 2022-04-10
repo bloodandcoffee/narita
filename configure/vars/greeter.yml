@@ -1,2 +1,2 @@
 ---
-greetd_command: cage -d -- gtkgreet -c river -s /etc/greetd/gtkgreet_style.css
+greetd_command: cage -d -m last-- gtkgreet -c river -s /etc/greetd/gtkgreet_style.css
