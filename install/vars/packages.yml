@@ -1,6 +1,7 @@
 ---
 user: kugelblitz
 packages:
+  - archlinux-keyring
   - adobe-source-han-sans-jp-fonts
   - alsa-firmware
   - alsa-utils
@@ -11,7 +12,6 @@ packages:
   - code
   - curl
   - dhcpcd
-  - discord
   - grim
   - gzip
   - imv
@@ -36,6 +36,7 @@ packages:
   - zip
 packages_aur:
   - auto-cpufreq
+  - discord_arch_electron_wayland
   - greetd
   - greetd-gtkgreet
   - apple-fonts
