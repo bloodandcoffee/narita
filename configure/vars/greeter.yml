@@ -1,2 +1,3 @@
 ---
-greetd_command: cage -d -m last -- gtkgreet -c river -s /etc/greetd/gtkgreet_style.css
+greetd_command_desktop: sway --config /etc/greetd/sway-config
+greetd_command_laptop: cage -d -m last -- gtkgreet -c river -s /etc/greetd/gtkgreet_style.css

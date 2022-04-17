@@ -5,6 +5,16 @@ declare IP
 echo "IP address or domain of target machine:"
 read IP
 
+# Read host type
+declare TYPE
+echo "Is the host a desktop (y/n)"
+read TYPE
+
+if [ "$(echo ${TYPE:0:1} | tr '[:upper:]' '[:lower:]')" == y ]; then
+	echo desktop: yes >> $(dirname "$BASH_SOURCE")/install/vars/packages.yml
+	echo desktop: yes >> $(dirname "$BASH_SOURCE")/configure/vars/greeter.yml
+fi
+
 echo root@$IP >> $(dirname "$BASH_SOURCE")/hosts
 
 # Run install playbooks
@@ -17,4 +27,4 @@ for PLAY in $(dirname "$BASH_SOURCE")/configure/*.yml; do
 	ansible-playbook $PLAY
 done
 
-git checkout $(dirname "$BASH_SOURCE")/hosts
+git checkout $(dirname "$BASH_SOURCE")/*

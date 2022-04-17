@@ -6,7 +6,6 @@ packages:
   - alsa-firmware
   - alsa-utils
   - ansible
-  - cage
   - chromium
   - cmatrix
   - code
@@ -21,6 +20,9 @@ packages:
   - mesa-demos
   - neofetch
   - networkmanager
+  - pipewire
+  - pipewire-media-session
+  - pipewire-pulse
   - python-pip
   - smartmontools
   - sudo
@@ -46,6 +48,12 @@ packages_aur:
   - wdisplays
   - wlogout
   - wlr-randr
+packages_desktop:
+  - sway
+  - xdg-desktop-portal-wlr
+packages_laptop:
+  - cage
+  - river
 ati:
   - libva-mesa-driver
   - mesa-vdpau
