@@ -34,24 +34,6 @@
       become_user: "{{ user }}"
       become_flags: -s /bin/sh
       loop: "{{ packages_aur }}"
-    - name: install desktop-specific packages
-      kewlfft.aur.aur:
-        name: "{{ item }}"
-        state: latest
-      become_method: su
-      become_user: "{{ user }}"
-      become_flags: -s /bin/sh
-      loop: "{{ packages_desktop }}"
-      when: desktop is defined
-    - name: install mobile-specific packages
-      kewlfft.aur.aur:
-        name: "{{ item }}"
-        state: latest
-      become_method: su
-      become_user: "{{ user }}"
-      become_flags: -s /bin/sh
-      loop: "{{ packages_laptop }}"
-      when: desktop is not defined
   post_tasks:
     - name: remove {{ user }} from sudoers
       lineinfile:

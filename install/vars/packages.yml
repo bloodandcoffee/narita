@@ -6,6 +6,8 @@ packages:
   - alsa-firmware
   - alsa-utils
   - ansible
+  - blueman
+  - bluez
   - chromium
   - cmatrix
   - code
@@ -13,6 +15,7 @@ packages:
   - dhcpcd
   - grim
   - gzip
+  - firefox
   - imv
   - kitty
   - man-db
@@ -20,8 +23,9 @@ packages:
   - mesa-demos
   - neofetch
   - networkmanager
+  - pavucontrol
   - pipewire
-  - pipewire-media-session
+  - pipewire-alsa
   - pipewire-pulse
   - python-pip
   - smartmontools
@@ -32,28 +36,24 @@ packages:
   - vim
   - waybar
   - wget
+  - wireplumber
   - xf86-input-synaptics
   - xorg-xwayland
   - xorg-xeyes
   - zip
 packages_aur:
   - auto-cpufreq
-  - discord_arch_electron_wayland
-  - greetd
-  - greetd-gtkgreet
+  - discord_arch_electron
   - apple-fonts
-  - river
+  - grimshot
+  - river-git
   - rofi-lbonn-wayland
+  - spotify
   - swaylock-effects-git
   - wdisplays
   - wlogout
   - wlr-randr
-packages_desktop:
-  - sway
   - xdg-desktop-portal-wlr
-packages_laptop:
-  - cage
-  - river
 ati:
   - libva-mesa-driver
   - mesa-vdpau
