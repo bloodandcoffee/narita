@@ -1,0 +1,48 @@
+---
+- hosts: all
+  become: yes
+  any_errors_fatal: false
+  vars:
+  pre_tasks:
+    - name: include vars
+      include_vars:
+        dir: "{{ playbook_dir }}/vars"
+  tasks:
+    - name: enable ntp
+      ansible.builtin.systemd:
+        name: ntpd
+        enabled: yes
+    - name: enable pipwire
+      ansible.builtin.systemd:
+        name: pipewire
+        scope: user
+        enabled: yes
+    - name: enable pipwire-pulse
+      ansible.builtin.systemd:
+        name: pipewire-pulse
+        scope: user
+        enabled: yes
+    - name: enable wireplumber
+      ansible.builtin.systemd:
+        name: wireplumber
+        scope: user
+        enabled: yes
+    - name: get hostname
+      command: "cat /etc/hostname"
+      register: hostname
+    - name: download wallpaper
+      command: "wget https://franktao.com/files/wallpapers/{{ hostname.stdout }}.jpg"
+      become_method: su
+      become_user: "{{ user }}"
+      become_flags: -s /bin/sh
+      ignore_errors: yes
+      args:
+        chdir: ~/.config
+    - name: rename wallpaper
+      command: "mv {{ hostname.stdout }}.jpg wallpaper.jpg"
+      become_method: su
+      become_user: "{{ user }}"
+      become_flags: -s /bin/sh
+      ignore_errors: yes
+      args:
+        chdir: ~/.config
