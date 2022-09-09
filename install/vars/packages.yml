@@ -10,6 +10,7 @@ packages:
   - bluez
   - chromium
   - cmatrix
+  - code
   - curl
   - dhcpcd
   - grim
@@ -42,7 +43,6 @@ packages:
   - xorg-xeyes
   - zip
 packages_aur:
-  - electron19-bin
   - auto-cpufreq
   - discord_arch_electron
   - apple-fonts
