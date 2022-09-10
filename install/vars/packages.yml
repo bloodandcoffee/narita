@@ -10,7 +10,6 @@ packages:
   - bluez
   - chromium
   - cmatrix
-  - code
   - curl
   - dhcpcd
   - grim
@@ -44,7 +43,8 @@ packages:
   - zip
 packages_aur:
   - auto-cpufreq
-  - discord_arch_electron
+  - electron13-bin
+  - discord_arch_electron_wayland
   - apple-fonts
   - grimshot
   - river-git
@@ -54,6 +54,7 @@ packages_aur:
   - wdisplays
   - wlogout
   - wlr-randr
+  - visual-studio-code-bin
   - xdg-desktop-portal-wlr
 ati:
   - libva-mesa-driver
