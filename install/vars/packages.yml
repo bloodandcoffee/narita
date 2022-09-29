@@ -17,6 +17,7 @@ packages:
   - firefox
   - imv
   - kitty
+  - light
   - man-db
   - mesa
   - mesa-demos
