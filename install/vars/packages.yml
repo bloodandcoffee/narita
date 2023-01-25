@@ -46,7 +46,6 @@ packages_aur:
   - discord_arch_electron
   - apple-fonts
   - grimshot
-  - river-git
   - rofi-lbonn-wayland
   - spotify
   - swaylock-effects-git
