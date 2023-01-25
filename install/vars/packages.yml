@@ -25,10 +25,9 @@ packages:
   - networkmanager
   - ntp
   - pavucontrol
-  - pipewire
-  - pipewire-alsa
   - pipewire-pulse
   - python-pip
+  - river
   - smartmontools
   - sudo
   - swaybg
@@ -44,8 +43,7 @@ packages:
   - zip
 packages_aur:
   - auto-cpufreq
-  - electron13-bin
-  - discord_arch_electron_wayland
+  - discord_arch_electron
   - apple-fonts
   - grimshot
   - river-git
